@@ -1,0 +1,47 @@
+
+:root {
+  /* 🎨 Modo Claro */
+  --color-background: #e6e8e3;
+  --color-surface: #d7dacf;
+  --color-text: #495168;
+  --color-primary: #8f9a9c;
+  --color-secondary: #65727a;
+  --color-error: #cc0000;
+  --color-success: #00cc66;
+  
+  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 10px 15px rgba(0, 0, 0, 0.2);
+  --border-radius: 10px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --transition-normal: 0.3s ease-in-out;
+}
+
+/* 🎨 Modo Escuro */
+[data-theme="dark"] {
+  --color-background: #260729;
+  --color-surface: #2a2344;
+  --color-text: #e6e8e3;
+  --color-primary: #ccbd9e;
+  --color-secondary: #495168;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
