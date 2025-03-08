@@ -1,0 +1,33 @@
+
+
+📦 src
+ ┣ 📂 components
+ ┃ ┣ 📂 headerPrivate
+ ┃ ┃ ┗ 📜 HeaderPrivate.tsx
+ ┃ ┣ 📂 headerPublic
+ ┃ ┃ ┗ 📜 HeaderPublic.tsx
+ ┃ ┗ 📂 PasswordInput
+ ┃ ┃ ┗ 📜 passwordInput.tsx   
+ ┣ 📂 pages
+ ┃ ┣ 📂 publicas
+ ┃ ┃ ┣ 📂 signInUp
+ ┃ ┃ ┃ ┗ 📜 signInUp.tsx
+ | ┃ ┣ 📂 geral
+ | |   ┗ 📜 index.tsx   
+ ┃ ┣ 📂 privadas
+ ┃ ┃ ┣ 📂 dashboard
+ ┃ ┃ ┃ ┗ 📜 dashboard.tsx
+ ┃ ┃ ┣ 📂 perfil
+ ┃ ┃ ┃ ┗ 📜 perfil.tsx
+ ┃ ┃ ┗ 📂 settings
+ ┃ ┃ ┃ ┗ 📜 settings.tsx
+ ┣ 📂 router
+ ┃ ┣ 📜 AppRoutes.tsx
+ ┃ ┣ 📜 PrivateRoutes.tsx
+ ┃ ┗ 📜 PublicRoutes.tsx
+ ┣ 📂 regex
+ ┃ ┗ 📜 regex.ts             
+ ┣ 📜 App.tsx                 
+ ┣ 📜 AppLayout.tsx            
+ ┣ 📜 main.tsx                
+ ┗ 📜 index.css 

@@ -1,174 +1,130 @@
-import { useState, useRef } from "react";
-import "./acess.css";
-
-// Importando as expressões regulares de validação
-import { emailRegex, passwordRegex } from "../../../regex";
+import { useState, useRef } from "react"
+import { useNavigate } from "react-router-dom"
+import "./acess.css"
+import { emailRegex, passwordRegex, nameRegex } from "../../../regex"
+import { PasswordInput } from "../../../components/PasswordInput/PasswordInput"
 
 export const Acesso = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
+ 
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginEmailError, setLoginEmailError] = useState("");
+  const [loginPasswordError, setLoginPasswordError] = useState("");
+
+ 
+  const [signupName, setSignupName] = useState("")
+  const [signupEmail, setSignupEmail] = useState("")
+  const [signupPassword, setSignupPassword] = useState("")
+  const [signupNameError, setSignupNameError] = useState("")
+  const [signupEmailError, setSignupEmailError] = useState("")
+  const [signupPasswordError, setSignupPasswordError] = useState("")
+
+  
   const handleRotation = (angle: number) => {
     if (containerRef.current) {
-      containerRef.current.style.transform = `rotateY(${angle}deg)`;
+      containerRef.current.style.transform = `rotateY(${angle}deg)`
     }
-  };
+  }
 
-  // Função para validação de email
-  const validateEmail = (email: string) => {
-    if (!email) {
-      return "Email é obrigatório.";
-    } else if (!emailRegex.test(email)) {
-      return "Email inválido.";
-    }
-    return "";
-  };
 
-  // Função para validação de senha
-  const validatePassword = (password: string) => {
-    if (!password) {
-      return "Senha é obrigatória.";
-    } else if (!passwordRegex.test(password)) {
-      return "A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, um número e um caractere especial.";
-    }
-    return "";
-  };
+  const validateEmail = (email: string) => (!email ? "Email é obrigatório." : emailRegex.test(email) ? "" : "Email inválido.")
+  const validatePassword = (password: string) => (!password ? "Senha é obrigatória." : passwordRegex.test(password) ? "" : "A senha deve ter pelo menos 6 caracteres.")
+  const validateName = (name: string) => (!name ? "Nome é obrigatório." : nameRegex.test(name) ? "" : "O nome deve ter pelo menos 5 letras.")
 
-  // Função para lidar com o submit do formulário de login
+  
   const handleLoginSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    // Validação dos campos
-    const emailError = validateEmail(email);
-    const passwordError = validatePassword(password);
+    const emailError = validateEmail(loginEmail)
+    const passwordError = validatePassword(loginPassword)
 
-    setEmailError(emailError);
-    setPasswordError(passwordError);
+    setLoginEmailError(emailError);
+    setLoginPasswordError(passwordError)
 
-    // Se não houver erro, pode submeter
+    
     if (!emailError && !passwordError) {
-      // Aqui você pode fazer o login, enviar dados para o backend, etc.
-      console.log("Login realizado com sucesso!");
+      
+      if (loginEmail === "usuario@exemplo.com" && loginPassword === "123456") {
+        navigate("/app/dashboard");
+       console.log("Login realizado com sucesso!")
+      } else {
+        alert("Credenciais incorretas.")
+      }
     }
-  };
+  }
 
-  // Função para lidar com o submit do formulário de cadastro
   const handleSignupSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    // Validação dos campos
-    const emailError = validateEmail(email);
-    const passwordError = validatePassword(password);
+    const nameError = validateName(signupName)
+    const emailError = validateEmail(signupEmail)
+    const passwordError = validatePassword(signupPassword)
 
-    setEmailError(emailError);
-    setPasswordError(passwordError);
+    setSignupNameError(nameError)
+    setSignupEmailError(emailError)
+    setSignupPasswordError(passwordError)
 
-    // Se não houver erro, pode submeter
-    if (!emailError && !passwordError) {
-      // Aqui você pode fazer o cadastro, enviar dados para o backend, etc.
-      console.log("Cadastro realizado com sucesso!");
+    if (!nameError && !emailError && !passwordError) {
+      alert("Cadastro realizado com sucesso!")
     }
-  };
+  }
 
   return (
     <div className="acesso-container">
       <div className="wrapper">
         <section className="container" ref={containerRef}>
-          {/* 🟢 Tela Inicial */}
+         
           <div className="container-a">
-            <h2>Bem-vindo!</h2>
+            <h2 className="container-title">Bem-vindo!</h2>
             <div className="direction">
-              <button className="navButton login" onClick={() => handleRotation(-90)}>
-                Login
-              </button>
-              <button className="navButton signup" onClick={() => handleRotation(-180)}>
-                Cadastro
-              </button>
+              <button className="navButton login" onClick={() => handleRotation(-90)}>Login</button>
+              <button className="navButton signup" onClick={() => handleRotation(-180)}>Cadastro</button>
             </div>
           </div>
 
-          {/* 🔵 Tela de Login */}
+          
           <div className="container-b">
             <h1>Login</h1>
             <form className="form" onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <label>Email</label>
-                <input
-                  type="email"
-                  placeholder="Digite seu email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {emailError && <span className="error">{emailError}</span>}
+                <input type="email" placeholder="Digite seu email" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
+                {loginEmailError && <span className="error">{loginEmailError}</span>}
               </div>
-              <div className="form-group">
-                <label>Senha</label>
-                <input
-                  type="password"
-                  placeholder="Digite sua senha"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {passwordError && <span className="error">{passwordError}</span>}
-              </div>
+              <PasswordInput label="Senha" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} error={loginPasswordError} />
               <button type="submit">Entrar</button>
             </form>
             <div className="btn">
-              <button className="signupLink" onClick={() => handleRotation(-180)}>
-                Cadastre-se aqui
-              </button>
+              <button className="signupLink" onClick={() => handleRotation(-180)}>Cadastre-se aqui</button>
             </div>
           </div>
 
-          {/* 🟣 Tela de Cadastro */}
+     
           <div className="container-c">
             <h1>Cadastro</h1>
             <form className="form" onSubmit={handleSignupSubmit}>
               <div className="form-group">
                 <label>Nome</label>
-                <input type="text" placeholder="Digite seu nome" required />
+                <input type="text" placeholder="Digite seu nome" value={signupName} onChange={(e) => setSignupName(e.target.value)} />
+                {signupNameError && <span className="error">{signupNameError}</span>}
               </div>
               <div className="form-group">
                 <label>Email</label>
-                <input
-                  type="email"
-                  placeholder="Digite seu email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {emailError && <span className="error">{emailError}</span>}
+                <input type="email" placeholder="Digite seu email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                {signupEmailError && <span className="error">{signupEmailError}</span>}
               </div>
-              <div className="form-group">
-                <label>Telefone</label>
-                <input type="tel" placeholder="Digite seu telefone" required />
-              </div>
-              <div className="form-group">
-                <label>Senha</label>
-                <input
-                  type="password"
-                  placeholder="Crie uma senha"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {passwordError && <span className="error">{passwordError}</span>}
-              </div>
+              <PasswordInput label="Senha" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} error={signupPasswordError} />
               <button type="submit">Cadastrar</button>
             </form>
             <div className="btn">
-              <button className="loginLink" onClick={() => handleRotation(-90)}>
-                Faça seu login
-              </button>
+              <button className="loginLink" onClick={() => handleRotation(-90)}>Faça seu login</button>
             </div>
           </div>
         </section>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,14 +1,23 @@
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { Acesso } from '../pages/publicas/signInUp'
+import { Geral } from '../pages/publicas/geral'
 
-import { Routes, Route } from "react-router-dom";
-import { Acesso } from "../pages/publicas/signInUp";
 
-
-const PublicRoutes = () => {
+const PublicRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Acesso />} />
+      
+      <Route path="/geral" element={<Geral />} />
+      
+      
+      <Route path="/auth" element={<Acesso />} />
+      
+      
+      <Route path="/" element={<Navigate to="/geral" replace />} />
+      <Route path="*" element={<Navigate to="/geral" replace />} />
     </Routes>
-  );
-};
+  )
+}
 
-export default PublicRoutes;
+export default PublicRoutes

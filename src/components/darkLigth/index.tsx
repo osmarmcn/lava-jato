@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import "./ThemeToggle.css"; // Importa os estilos do botão
+import { useEffect, useState } from "react"
+import "./ThemeToggle.css"
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState<"light" | "dark">(
     (localStorage.getItem("theme") as "light" | "dark") || "light"
-  );
+  )
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [theme])
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  }
 
   return (
     <label className="theme-toggle">
