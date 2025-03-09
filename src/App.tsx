@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-
 import { HeaderPrivate } from "./components/headerPrivate/HeaderPrivate";
 import PrivateRoutes from "./router/PrivateRoutes";
 import PublicRoutes from "./router/PublicRoutes";
-import "./App.css";
 import { HeaderPublic } from "./components/headerPublic";
+import { AuthProvider } from "./context/auth";
+import "./App.css";
 
 
 function AppContent() {
-  const location = useLocation()
-  
+  const location = useLocation();
+
   return (
     <>
       <header>
@@ -18,10 +18,7 @@ function AppContent() {
 
       <main>
         <Routes>
-         
           <Route path="/*" element={<PublicRoutes />} />
-          
-         
           <Route path="/app/*" element={<PrivateRoutes />} />
         </Routes>
       </main>
@@ -29,13 +26,15 @@ function AppContent() {
   );
 }
 
-// Componente principal que configura o BrowserRouter
+// Componente principal que envolve tudo com AuthProvider
 function App() {
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <AuthProvider> {/* Agora o contexto de autenticação envolve toda a aplicação */}
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
-export default App
+export default App;
