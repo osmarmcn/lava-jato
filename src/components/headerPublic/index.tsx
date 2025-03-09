@@ -1,5 +1,5 @@
 import { ThemeToggle } from "../darkLigth"
-import "./HeaderPublic.css"
+import '../../styles/headerPublic.css'
 
 
 export const HeaderPublic = () => {
