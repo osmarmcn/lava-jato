@@ -1,59 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/* :root {
- 
-  --color-background: #e6e8e3;
-  --color-surface: #d7dacf;
-  --color-text: #495168;
-  --color-primary: #8f9a9c;
-  --color-secondary: #65727a;
-  --color-error: #cc0000;
-  --color-success: #00cc66;
-  
-  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0px 10px 15px rgba(0, 0, 0, 0.2);
-  --border-radius: 10px;
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 20px;
-  --font-size-xl: 24px;
-  --transition-normal: 0.3s ease-in-out;
-}
 
-
-[data-theme="dark"] {
-  --color-background: #260729;
-  --color-surface: #2a2344;
-  --color-text: #e6e8e3;
-  --color-primary: #ccbd9e;
-  --color-secondary: #495168;
-}
-
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
-} */
 
 :root {
-  --color-background: #f5f7fa;  /* Um tom quase branco, mais agradável aos olhos */
-  --color-surface: #e3e6eb;  /* Leve tom azulado, remete à limpeza */
-  --color-text: #2b2d42;  /* Azul escuro quase preto para melhor leitura */
-  --color-primary: #0077b6;  /* Azul vibrante que remete à água e tecnologia */
-  --color-secondary: #0096c7;  /* Um tom mais claro de azul para contraste */
-  --color-error: #d90429;  /* Vermelho vibrante para alertas */
-  --color-success: #3ca374;  /* Verde equilibrado para sucesso */
+  --color-background: #f5f7fa;  
+  --color-surface: #e3e6eb;  
+  --color-text: #2b2d42;  
+  --color-primary: #0077b6;  
+  --color-secondary: #0096c7;  
+  --color-error: #d90429;  
+  --color-success: #3ca374;  
 
   --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0px 10px 15px rgba(0, 0, 0, 0.2);
@@ -72,11 +27,11 @@ body {
 
 
 [data-theme="dark"] {
-  --color-background: #121826;  /* Azul bem escuro para menos fadiga visual */
-  --color-surface: #1f2937;  /* Cinza-azulado escuro para contraste sutil */
-  --color-text: #e5e7eb;  /* Cinza claro para melhor leitura */
-  --color-primary: #00a8e8;  /* Azul vibrante, combinando com o modo claro */
-  --color-secondary: #1e81b0;  /* Um azul mais fechado para contraste */
+  --color-background: #121826;  
+  --color-surface: #1f2937;  
+  --color-text: #e5e7eb;  
+  --color-primary: #00a8e8;  
+  --color-secondary: #1e81b0; 
 }
 
 *{

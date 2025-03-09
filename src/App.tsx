@@ -4,7 +4,7 @@ import PrivateRoutes from "./router/PrivateRoutes";
 import PublicRoutes from "./router/PublicRoutes";
 import { HeaderPublic } from "./components/headerPublic";
 import { AuthProvider } from "./context/auth";
-import "./App.css";
+
 
 
 function AppContent() {
